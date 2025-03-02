@@ -4,6 +4,7 @@ import Sports_Manager.TeamManager.DTOs.PlayerDTO;
 import Sports_Manager.TeamManager.mappers.PlayerMapper;
 import Sports_Manager.TeamManager.models.Player;
 import Sports_Manager.TeamManager.repos.PlayerRepo;
+import Sports_Manager.TeamManager.repos.RoleRepo;
 import Sports_Manager.TeamManager.repos.TeamRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -18,22 +19,24 @@ public class PlayerService {
     private PlayerRepo pr;
     private PlayerMapper pmapr;
     private TeamRepo tr;
+    private RoleRepo rr;
     @Autowired
-    public PlayerService(PlayerRepo p, TeamRepo t,PlayerMapper pm){
+    public PlayerService(PlayerRepo p, TeamRepo t,PlayerMapper pm,RoleRepo rore){
         pr =p;
         tr =t;
         pmapr =pm;
+        rr =rore;
 
     }
     public Player createPlayer(PlayerDTO pdto){
-         return pr.save(pmapr.mapDTO(pdto,tr.getByName(pdto.getTeamName())));
+         return pr.save(pmapr.mapDTO(pdto,tr.getByName(pdto.getTeamName()),rr.getByName(pdto.getRole())));
     }
     public PlayerDTO getPlayerById(Long id){
         return pmapr.map2DTO(pr.getByID(id));
     }
     public Player updatePlayer(PlayerDTO pdto){
 
-        return pr.save(pmapr.mapDTO(pdto,tr.getByName(pdto.getTeamName())));
+        return pr.save(pmapr.mapDTO(pdto,tr.getByName(pdto.getTeamName()),rr.getByName(pdto.getRole())));
     }
     public void deleteById(Long id){
         pr.deleteByID(id);

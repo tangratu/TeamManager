@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "teams")
+@Table(name = "role")
 @Data
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idteams;
+    private long idrole;
     @Column
-    private String role_name;
+    private String name;
+
 }

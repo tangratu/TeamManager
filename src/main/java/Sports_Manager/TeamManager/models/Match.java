@@ -13,7 +13,9 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idmatches;
     @Column
-    private String score;
+    private Integer host_score;
+    @Column
+    private Integer away_score;
     @Column
     private LocalDateTime start;
     @Column
@@ -30,7 +32,5 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "venue_id")
     private Venue venue;
-    @ManyToOne
-    @JoinColumn(name = "mvp_id")
-    private Player mvp;
+
 }

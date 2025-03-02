@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api.V1/teams")
@@ -52,5 +53,13 @@ public class TeamController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping(path = "/update/addPlayer")
-    public ResponseEntity<Void> addPlayer(){return new ResponseEntity<>(HttpStatus.OK);}
+    public ResponseEntity<Void> addPlayer(@RequestBody Map<String,Long> rqbody){
+        ts.addPlayerToTeam(rqbody.get("player_id"),rqbody.get("team_id"));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping(path = "/update/removePlayer")
+    public ResponseEntity<Void> removePlayer(@RequestBody Map<String,Long> rqbody) {
+        ts.removePlayerFromTeam(rqbody.get("player_id"),rqbody.get("team_id"));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

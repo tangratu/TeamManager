@@ -26,5 +26,11 @@ public class Player {
     @JoinColumn(name = "role_id")
     @ManyToOne
     private Role role;
+    public String getTName(){
+        if (team == null){
+            return "none";
+        }
+        return team.getTeam_name();
+    }
 
 }

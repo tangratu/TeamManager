@@ -16,7 +16,6 @@ public class Sport {
     private String s_name;
     @Column
     private String ruleset;
-    @Column
-    private Integer players_per_side;
+
 
 }

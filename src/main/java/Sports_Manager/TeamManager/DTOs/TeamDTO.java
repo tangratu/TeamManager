@@ -5,11 +5,13 @@ import lombok.Data;
 @Data
 public class TeamDTO {
 
-    private long idteams;
+
 
     private String team_name;
 
     private Boolean active;
 
     private Integer ranking;
+
+    private Double base_salary;
 }

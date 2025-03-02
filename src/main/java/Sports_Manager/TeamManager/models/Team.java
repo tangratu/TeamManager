@@ -23,12 +23,14 @@ public class Team {
     @Column
     private Double base_salary;
 
-    public void addPlayer(Player p){
+    public Team addPlayer(Player p){
         players.add(p);
         p.setTeam(this);
+        return this;
     }
-    public void removePlayer(Player p){
+    public Team removePlayer(Player p){
         players.remove(p);
         p.setTeam(null);
+        return this;
     }
 }

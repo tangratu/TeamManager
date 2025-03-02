@@ -16,6 +16,5 @@ public class Venue {
     private String v_name;
     @Column
     private String location;
-    @OneToMany(mappedBy = "venue")
-    private List<Match> local_matches;
+
 }

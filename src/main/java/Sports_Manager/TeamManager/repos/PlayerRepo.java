@@ -11,12 +11,12 @@ import java.util.List;
 @Repository
 public interface PlayerRepo extends JpaRepository<Player,Long> {
 
-    @Query(value = "SELECT p FROM Players p WHERE fname=?1 AND lname = ?2")
+    @Query(value = "SELECT p FROM Player p WHERE p.fname=?1 AND p.lname = ?2")
     public Player getByName(String fname, String lname);
-    @Query(value = "SELECT p FROM Players p WHERE idplayers=?1")
+    @Query(value = "SELECT p FROM Player p WHERE p.idplayers=?1")
     public Player getByID(Long id);
-    @Query(value = "SELECT p FROM Players p WHERE team_id=?1")
+    @Query(value = "SELECT p FROM Player p WHERE p.team.idteams=?1")
     public List<Player> getByTeamID(Long id);
-    @Query(value = "DELETE FROM Players p WHERE idplayers=?1")
+    @Query(value = "DELETE FROM Player p WHERE p.idplayers=?1")
     public void deleteByID(Long id);
 }

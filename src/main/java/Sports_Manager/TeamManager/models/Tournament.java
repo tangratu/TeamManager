@@ -16,10 +16,6 @@ public class Tournament {
     @Column
     private String t_name;
     @Column
-    private float rating_weight;
-    @Column
-    private int rating_min;
-    @Column
     private LocalDateTime begins;
     @Column
     private LocalDateTime ends;

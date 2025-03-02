@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class PlayerDTO {
-    private long idplayers;
+
 
     private String fname;
 
@@ -17,4 +17,6 @@ public class PlayerDTO {
     private Double salary;
 
     private String teamName;
+
+    private String role;
 }
