@@ -14,7 +14,7 @@ public interface MatchesMapper {
     @Mapping(target = "host",expression = "java(match.getHost().getTeam_name())")
     @Mapping(target = "away",expression = "java(match.getAway().getTeam_name())")
     @Mapping(target = "venue",expression = "java(match.getVenue().getV_name())")
-    @Mapping(target = "tourney",expression = "java(match.getTournament().getT_name())")
+    @Mapping(target = "tourney",expression = "java(match.getTName())")
     public MatchDTO map2DTO(Match match);
     @Mapping(target = "host_score",source = "host_s")
     @Mapping(target = "away_score",source = "away_s")

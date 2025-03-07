@@ -32,5 +32,11 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "venue_id")
     private Venue venue;
+    public String getTName(){
+        if(tournament == null){
+            return "none";
+        }
+        return tournament.getT_name();
+    }
 
 }

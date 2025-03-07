@@ -16,7 +16,7 @@ public interface PlayerMapper {
 
 
     @Mapping(target = "teamName",expression = "java(player.getTName())")
-    @Mapping(target = "role",expression = "java(player.getRole().getName())")
+    @Mapping(target = "role",expression = "java(player.getR())")
     public PlayerDTO map2DTO(Player player);
     @Mapping(target = "team",source = "t")
     @Mapping(target = "role",source = "r")

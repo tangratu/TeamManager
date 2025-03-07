@@ -32,5 +32,11 @@ public class Player {
         }
         return team.getTeam_name();
     }
+    public String getR(){
+        if(role == null){
+            return "none";
+        }
+        return role.getName();
+    }
 
 }

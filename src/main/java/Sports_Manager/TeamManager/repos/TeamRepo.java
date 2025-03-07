@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface TeamRepo extends JpaRepository<Team,Integer> {
+public interface TeamRepo extends JpaRepository<Team,Long> {
     @Query(value = "SELECT t FROM Team t WHERE t.team_name = ?1")
     Team getByName(String name);
     @Query(value = "SELECT t FROM Team t WHERE t.idteams =?1")

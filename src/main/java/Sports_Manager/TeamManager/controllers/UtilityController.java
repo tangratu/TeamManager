@@ -21,7 +21,7 @@ public class UtilityController {
         us =u;
     }
     @PostMapping(path = "/role/create")
-    public ResponseEntity<Role> createRole(@RequestBody  String r){
+    public ResponseEntity<Role> createRole(@RequestParam("role")  String r){
        return  new ResponseEntity<>(us.createRole(r), HttpStatus.CREATED);
     }
     @PostMapping(path = "/venue/create")
