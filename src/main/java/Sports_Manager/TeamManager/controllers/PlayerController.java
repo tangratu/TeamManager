@@ -22,7 +22,7 @@ public class PlayerController {
 
     }
 
-    @GetMapping(path = "/All")
+    @GetMapping(path = "/all")
     public ResponseEntity<List<PlayerDTO>> getAllPlayers(){
         return new ResponseEntity<>(ps.getAllPlayers(), HttpStatus.ACCEPTED);
     }

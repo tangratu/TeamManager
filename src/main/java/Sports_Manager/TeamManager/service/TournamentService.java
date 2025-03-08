@@ -6,6 +6,7 @@ import Sports_Manager.TeamManager.models.Tournament;
 import Sports_Manager.TeamManager.repos.MatchRepo;
 import Sports_Manager.TeamManager.repos.SportRepo;
 import Sports_Manager.TeamManager.repos.TournamentRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -17,7 +18,7 @@ public class TournamentService {
     private TournamentMapper tm;
     private SportRepo sr;
     private MatchRepo mr;
-
+    @Autowired
     public TournamentService(TournamentRepo t, TournamentMapper tt, SportRepo s, MatchRepo m){
         tr =t;
         tm =tt;
