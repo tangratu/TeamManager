@@ -24,4 +24,15 @@ public class Tournament {
     private Sport sport;
     @OneToMany(mappedBy = "tournament")
     private List<Match> matches;
+
+    public Tournament addMatch(Match m){
+        matches.add(m);
+        m.setTournament(this);
+        return this;
+    }
+    public Tournament removeMatch(Match m){
+        matches.remove(m);
+        m.setTournament(null);
+        return  this;
+    }
 }

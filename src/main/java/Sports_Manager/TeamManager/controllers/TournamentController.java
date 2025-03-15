@@ -1,6 +1,7 @@
 package Sports_Manager.TeamManager.controllers;
 
 import Sports_Manager.TeamManager.DTOs.TournamentDTO;
+import Sports_Manager.TeamManager.models.Match;
 import Sports_Manager.TeamManager.service.TournamentService;
 import com.sun.net.httpserver.HttpsServer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api.V1/tournaments")
@@ -38,6 +40,16 @@ public class TournamentController {
     @DeleteMapping(path = "/delete")
     public ResponseEntity<Void> deleteTournament(@RequestParam("name") String name){
         ts.deleteTournament(name);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping(path = "/update/add")
+    public ResponseEntity<Void> addMatch(@RequestBody Map<String,Long> input){
+        ts.addMatch(input.get("id_tournament"),input.get("id_match"));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping(path = "/update/remove")
+    public ResponseEntity<Void> removeMatch(@RequestBody Map<String,Long> input){
+        ts.removeMatch(input.get("id_tournament"),input.get("id_match"));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

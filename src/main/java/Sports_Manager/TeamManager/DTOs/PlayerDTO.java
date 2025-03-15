@@ -12,6 +12,10 @@ public class PlayerDTO {
 
     private String lname;
 
+    private String username;
+
+    private String password;
+
     private Integer age;
 
     private Double salary;

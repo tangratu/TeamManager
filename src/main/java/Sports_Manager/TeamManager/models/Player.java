@@ -19,6 +19,10 @@ public class Player {
     @Column
     private Integer age;
     @Column
+    private String username;
+    @Column
+    private String password;
+    @Column
     private Double salary;
     @JoinColumn(name = "team_id")
     @ManyToOne

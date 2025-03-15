@@ -40,4 +40,10 @@ public class TournamentService {
     public void deleteTournament(String name){
         tr.delete(tr.getByName(name));
     }
+    public void addMatch(Long id_tournament, Long id_match){
+        tr.save(tr.getReferenceById(id_tournament).addMatch(mr.getByID(id_match)));
+    }
+    public void removeMatch(Long id_tournament, Long id_match){
+        tr.save(tr.getReferenceById(id_tournament).removeMatch(mr.getByID(id_match)));
+    }
 }
