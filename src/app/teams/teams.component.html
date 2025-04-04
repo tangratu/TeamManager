@@ -1,0 +1,12 @@
+<p>In teams</p>
+
+ <ul>
+  @for(t of teams$ | async ; track t.team_name) {
+   <li>
+    <app-team-listing [listing]=t (click)="goTo(t.team_name)"/>
+   </li>
+  }
+ </ul>
+
+  
+  
