@@ -1,0 +1,11 @@
+<div class="teampage">
+@if(match$ | async; as m) {	
+	<div>
+		<h1>{{m.host}} VS {{m.away}}</h1>
+		<p>Played in {{m.venue}}</p>		
+		<p>Part of {{m.tourney}}</p>
+		<h2>{{m.score}}</h2>		
+	</div>	
+}
+
+</div>

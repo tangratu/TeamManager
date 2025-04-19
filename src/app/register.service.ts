@@ -36,4 +36,5 @@ export class RegisterService {
 	  this.router.navigate(['/login']);
   }
   
+  
 }

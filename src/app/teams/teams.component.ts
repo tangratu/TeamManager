@@ -19,6 +19,7 @@ export class TeamsComponent {
 		
 	}
 	goTo(name: string) {
+		console.warn(name);
 		this.ts.goToPage(name);
 	}
 	

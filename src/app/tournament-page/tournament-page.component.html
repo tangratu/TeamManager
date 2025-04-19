@@ -1,0 +1,13 @@
+@if(currTour$ | async; as tour) {
+	<h2>{{tour.t_name}}</h2>
+	<div>
+		<p>Type: {{tour.sport}}</p>
+		<ul>
+			@for(m of matches$ | async ; track m.desig) {
+				<li>
+					<app-match-listing [listing]=m (click)="goTo(m.desig)"/>
+				</li>
+			}
+		</ul>
+	</div>	
+}	

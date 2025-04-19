@@ -3,7 +3,7 @@
  <ul>
   @for(t of teams$ | async ; track t.team_name) {
    <li>
-    <app-team-listing [listing]=t (click)="goTo(t.team_name)"/>
+    <app-team-listing [listing]=t [player_count_max]=12 (click)="goTo(t.team_name)"/>
    </li>
   }
  </ul>

@@ -37,6 +37,6 @@ export class RegistrationComponent {
 		};
 		
 		this.registerService.register(user).subscribe(u => this.registerService.goToLogin());
-		this.regformgroup.reset();
+		
     }
 }

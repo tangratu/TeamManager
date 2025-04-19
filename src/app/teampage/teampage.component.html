@@ -1,4 +1,29 @@
-
-@if(currTeam$ | async; as team) {
-	<p>{{team.team_name}}</p>
-}	
+<div class="teampage">
+@if(currTeam$ | async; as team) {	
+	<div>
+		<h3>{{team.team_name}}</h3>
+		<p>Managed by: none</p>
+		@if(team.active) {
+			<p>Team is currently active</p>
+		}
+		@else{
+			<p>Team is not active right now</p>
+		}
+		<p>Expected base salary: At least {{team.base_salary}}</p>
+		<ol>
+			@for(member of players$ | async; track member.username) {
+				<li>
+					<div class="playerInfo">
+						<span class="names">{{member.fname}} {{member.lname}} </span>
+						<span class="salary">{{member.salary}}</span>
+						<span class="age"> {{member.age}} y.</span>
+					</div>
+				</li>
+			}
+		</ol>
+	</div>	
+}
+ @if(obsrole == "manager" && !hasTeam) {
+	<button type="button" (click)="becomeManager()">Become manager</button>
+ }
+</div>	

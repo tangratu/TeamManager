@@ -4,4 +4,5 @@ export interface Team {
 	ranking: number;
 	base_salary: number;
 	player_count: number;
+	m_name: string;
 }

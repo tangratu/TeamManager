@@ -1,1 +1,9 @@
-<p>tournaments works!</p>
+
+
+ <ul>
+  @for(t of tournaments$ | async ; track t.t_name) {
+   <li>
+    <app-tournament-listing [listing]=t (click)="goTo(t.t_name)"/>
+   </li>
+  }
+ </ul>
