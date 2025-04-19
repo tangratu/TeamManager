@@ -7,7 +7,6 @@ import Sports_Manager.TeamManager.repos.PlayerRepo;
 import Sports_Manager.TeamManager.repos.RoleRepo;
 import Sports_Manager.TeamManager.repos.TeamRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +33,9 @@ public class PlayerService {
     public PlayerDTO getPlayerById(Long id){
         return pmapr.map2DTO(pr.getByID(id));
     }
+    public PlayerDTO verify(String username, String password){
+        return pmapr.map2DTO(pr.getByUsernamePassword(username,password));
+    }
     public Player updatePlayer(PlayerDTO pdto){
 
         return pr.save(pmapr.mapDTO(pdto,tr.getByName(pdto.getTeamName()),rr.getByName(pdto.getRole())));
@@ -50,4 +52,5 @@ public class PlayerService {
     public List<PlayerDTO> getPlayersByTeamID(Long id){
         return pr.getByTeamID(id).stream().map(pmapr::map2DTO).collect(Collectors.toList());
     }
+
 }

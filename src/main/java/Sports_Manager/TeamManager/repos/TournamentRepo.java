@@ -14,4 +14,5 @@ public interface TournamentRepo extends JpaRepository<Tournament,Long> {
     public Tournament getByName(String name);
     @Query(value = "SELECT m FROM Match m WHERE m.tournament.t_name=?1")
     public List<Match> getAllMatchesByTournamentName(String name);
+
 }

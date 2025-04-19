@@ -35,6 +35,10 @@ public class MatchService {
     public MatchDTO getMatchByID(Long id){
         return mm.map2DTO(mr.getByID(id));
     }
+    public MatchDTO getMatchByDesig(String desig){
+        return mm.map2DTO(mr.getByDesig(desig));
+    }
+
     public Match createMatch(MatchDTO mdto){
         return mr.save(mm.mapDTO(mdto,Integer.parseInt(mdto.getScore().split("-")[0]),
                 Integer.parseInt(mdto.getScore().split("-")[1]),tr.getByName(mdto.getHost()),tr.getByName(mdto.getAway()),

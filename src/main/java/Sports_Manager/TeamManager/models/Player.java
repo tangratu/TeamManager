@@ -22,6 +22,7 @@ public class Player {
     private String username;
     @Column
     private String password;
+
     @Column
     private Double salary;
     @JoinColumn(name = "team_id")
@@ -34,6 +35,7 @@ public class Player {
         if (team == null){
             return "none";
         }
+
         return team.getTeam_name();
     }
     public String getR(){

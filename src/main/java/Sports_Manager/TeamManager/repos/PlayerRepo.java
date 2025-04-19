@@ -19,4 +19,8 @@ public interface PlayerRepo extends JpaRepository<Player,Long> {
     public List<Player> getByTeamID(Long id);
     @Query(value = "DELETE FROM Player p WHERE p.idplayers=?1")
     public void deleteByID(Long id);
+    @Query(value = "SELECT p FROM Player p WHERE p.username = ?1 AND p.password = ?2")
+    public Player getByUsernamePassword(String username, String password);
+    @Query(value = "SELECT p FROM Player p WHERE p.username = ?1 ")
+    public Player getByUsername(String username);
 }

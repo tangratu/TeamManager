@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface MatchRepo extends JpaRepository<Match,Long> {
     @Query(value = "SELECT m FROM Match m WHERE m.idmatches = ?1")
     public Match getByID(Long id);
+    @Query(value = "SELECT m FROM Match m WHERE m.desig = ?1")
+    public Match getByDesig(String desig);
 }

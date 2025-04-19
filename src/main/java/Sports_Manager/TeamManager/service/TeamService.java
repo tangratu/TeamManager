@@ -1,8 +1,6 @@
 package Sports_Manager.TeamManager.service;
 
-import Sports_Manager.TeamManager.DTOs.PlayerDTO;
 import Sports_Manager.TeamManager.DTOs.TeamDTO;
-import Sports_Manager.TeamManager.mappers.PlayerMapper;
 import Sports_Manager.TeamManager.mappers.TeamMapper;
 import Sports_Manager.TeamManager.models.Player;
 import Sports_Manager.TeamManager.models.Team;
@@ -43,19 +41,29 @@ public class TeamService {
     public Team createTeam(TeamDTO dto){
         return tr.save(tmapr.mapDTO(dto,new LinkedList<>()));
     }
-    public TeamDTO getTeamByID(Long id){
-        return tmapr.map2DTO(tr.getByID(id));
-    }
+
     public Team updateTeam(TeamDTO dto){
         return tr.save(tmapr.mapDTO(dto,getPlayerList(dto.getTeam_name())));
     }
+
+
     public void deleteTeamByID(Long id){
         tr.deleteByID(id);
     }
-    public void addPlayerToTeam(Long player_id, Long team_id){
-        tr.save(tr.getByID(team_id).addPlayer(pr.getByID(player_id)));
+    public void addPlayerToTeam(String uname, String team_name){
+        tr.save(tr.getByName(team_name).addPlayer(pr.getByUsername(uname)));
     }
     public void removePlayerFromTeam(Long player_id, Long team_id){
         tr.save(tr.getByID(team_id).removePlayer(pr.getByID(player_id)));
     }
+    public Player getManager(String teamName){
+
+
+        return tr.getManagerByTeam(teamName);
+    }
+    public Team getTeamByPlayerUName(String uname){
+        return tr.getTeamByPlayerUname(uname);
+    }
+
+
 }

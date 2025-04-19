@@ -1,15 +1,19 @@
 package Sports_Manager.TeamManager.DTOs;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class MatchDTO {
-    private Long idmatches;
+    private String desig;
     private String score;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd:MM:yyyy")
+    private Date start;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd:MM:yyyy")
+    private Date end;
     private String host;
     private String away;
     private String tourney;

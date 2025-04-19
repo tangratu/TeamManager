@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "matches")
@@ -13,13 +14,15 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idmatches;
     @Column
+    private String desig;
+    @Column
     private Integer host_score;
     @Column
     private Integer away_score;
     @Column
-    private LocalDateTime start;
+    private Date start;
     @Column
-    private LocalDateTime end;
+    private Date end;
     @ManyToOne
     @JoinColumn(name = "tournament_id")
     private Tournament tournament;

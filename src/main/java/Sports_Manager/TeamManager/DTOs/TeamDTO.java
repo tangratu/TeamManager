@@ -14,4 +14,7 @@ public class TeamDTO {
     private Integer ranking;
 
     private Double base_salary;
+    private Integer player_count;
+    private String m_name;
+
 }

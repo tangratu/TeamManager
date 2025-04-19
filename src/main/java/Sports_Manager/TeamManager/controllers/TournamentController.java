@@ -1,6 +1,8 @@
 package Sports_Manager.TeamManager.controllers;
 
+import Sports_Manager.TeamManager.DTOs.MatchDTO;
 import Sports_Manager.TeamManager.DTOs.TournamentDTO;
+import Sports_Manager.TeamManager.mappers.MatchesMapper;
 import Sports_Manager.TeamManager.models.Match;
 import Sports_Manager.TeamManager.service.TournamentService;
 import com.sun.net.httpserver.HttpsServer;
@@ -16,17 +18,19 @@ import java.util.Map;
 @RequestMapping(path = "/api.V1/tournaments")
 public class TournamentController {
     private TournamentService ts;
+    private MatchesMapper ms;
     @Autowired
-    public TournamentController(TournamentService t){
+    public TournamentController(TournamentService t, MatchesMapper m){
         ts=t;
+        ms =m;
     }
     @GetMapping(path = "/all")
     public ResponseEntity<List<TournamentDTO>> getAllTournaments(){
-        return new ResponseEntity<>(ts.getAllTournaments(), HttpStatus.FOUND);
+        return new ResponseEntity<>(ts.getAllTournaments(), HttpStatus.OK);
     }
-    @GetMapping(path = "/find")
-    public ResponseEntity<TournamentDTO> getByName(@RequestParam("name") String name){
-        return new ResponseEntity<>(ts.getByName(name),HttpStatus.FOUND);
+    @GetMapping(path = "/{name}")
+    public ResponseEntity<TournamentDTO> getByName(@PathVariable String name){
+        return new ResponseEntity<>(ts.getByName(name),HttpStatus.OK);
     }
     @PostMapping(path = "/create")
     public ResponseEntity<Void> createTournament(@RequestBody TournamentDTO tdto){
@@ -35,7 +39,7 @@ public class TournamentController {
     }
     @PutMapping(path = "/update")
     public ResponseEntity<TournamentDTO> updateTournament(@RequestBody TournamentDTO tdto){
-        return new ResponseEntity<>(ts.updateTournament(tdto),HttpStatus.FOUND);
+        return new ResponseEntity<>(ts.updateTournament(tdto),HttpStatus.OK);
     }
     @DeleteMapping(path = "/delete")
     public ResponseEntity<Void> deleteTournament(@RequestParam("name") String name){
@@ -51,5 +55,9 @@ public class TournamentController {
     public ResponseEntity<Void> removeMatch(@RequestBody Map<String,Long> input){
         ts.removeMatch(input.get("id_tournament"),input.get("id_match"));
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping(path = "matchesOf/{name}")
+    public ResponseEntity<List<MatchDTO>> getMatches(@PathVariable String name) {
+        return new ResponseEntity<>(ts.getMatches(name).stream().map(ls -> ms.map2DTO(ls)).toList(),HttpStatus.OK);
     }
 }

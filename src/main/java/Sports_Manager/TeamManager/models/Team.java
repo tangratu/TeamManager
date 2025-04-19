@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "teams")
@@ -23,8 +24,10 @@ public class Team {
     @Column
     private Double base_salary;
 
+
     public Team addPlayer(Player p){
         players.add(p);
+
         p.setTeam(this);
         return this;
     }
@@ -33,4 +36,15 @@ public class Team {
         p.setTeam(null);
         return this;
     }
+    public String getMName(){
+        for (int i = 0; i < players.size(); i++) {
+            Player temp = players.get(i);
+
+            if(!Objects.equals(temp.getR(), "player")){
+                return temp.getFname()+" "+temp.getLname();
+            }
+        }
+        return "none";
+    }
+
 }

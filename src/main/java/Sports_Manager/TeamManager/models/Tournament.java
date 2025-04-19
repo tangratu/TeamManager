@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,9 +17,9 @@ public class Tournament {
     @Column
     private String t_name;
     @Column
-    private LocalDateTime begins;
+    private Date begins;
     @Column
-    private LocalDateTime ends;
+    private Date ends;
     @JoinColumn(name = "sport_id")
     @ManyToOne
     private Sport sport;

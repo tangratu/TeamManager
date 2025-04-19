@@ -27,6 +27,10 @@ public class MatchController {
     public ResponseEntity<MatchDTO> getMatchByID(@RequestParam("id") Long id){
         return new ResponseEntity<>(ms.getMatchByID(id),HttpStatus.FOUND);
     }
+    @GetMapping(path="/info")
+    public ResponseEntity<MatchDTO> getMatchByDesig(@RequestParam("desig") String desig){
+        return new ResponseEntity<>(ms.getMatchByDesig(desig),HttpStatus.OK);
+    }
     @PostMapping(path = "/create")
     public ResponseEntity<Void> createMatch(@RequestBody MatchDTO mdto){
         ms.createMatch(mdto);

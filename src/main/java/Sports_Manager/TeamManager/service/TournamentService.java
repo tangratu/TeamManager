@@ -2,6 +2,7 @@ package Sports_Manager.TeamManager.service;
 
 import Sports_Manager.TeamManager.DTOs.TournamentDTO;
 import Sports_Manager.TeamManager.mappers.TournamentMapper;
+import Sports_Manager.TeamManager.models.Match;
 import Sports_Manager.TeamManager.models.Tournament;
 import Sports_Manager.TeamManager.repos.MatchRepo;
 import Sports_Manager.TeamManager.repos.SportRepo;
@@ -45,5 +46,8 @@ public class TournamentService {
     }
     public void removeMatch(Long id_tournament, Long id_match){
         tr.save(tr.getReferenceById(id_tournament).removeMatch(mr.getByID(id_match)));
+    }
+    public List<Match> getMatches(String name){
+        return tr.getAllMatchesByTournamentName(name);
     }
 }
